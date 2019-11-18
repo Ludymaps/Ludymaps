@@ -89,8 +89,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Nombre</th>\
-                        <td>' + (feature.properties['Nombre'] !== null ? Autolinker.link(String(feature.properties['Nombre'])) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? Autolinker.link(String(feature.properties['Nombre'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -120,7 +119,6 @@
             style: style_Lotes_0_0,
         });
         bounds_group.addLayer(layer_Lotes_0);
-        map.addLayer(layer_Lotes_0);
         function pop_Camino_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -341,9 +339,46 @@
         });
         bounds_group.addLayer(layer_Cable_Via_4);
         map.addLayer(layer_Cable_Via_4);
+        map.on("zoomend", function(e) {
+            if (map.getZoom() <= 19 && map.getZoom() >= 17) {
+                map.addLayer(layer_Plantas_2);
+            } else if (map.getZoom() > 19 || map.getZoom() < 17) {
+                map.removeLayer(layer_Plantas_2);
+            }
+        });
+            if (map.getZoom() <= 19 && map.getZoom() >= 17) {
+                map.addLayer(layer_Plantas_2);
+            } else if (map.getZoom() > 19 || map.getZoom() < 17) {
+                map.removeLayer(layer_Plantas_2);
+            }
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Cable_Via_4.png" /> Cable_Via': layer_Cable_Via_4,'<img src="legend/Drenaje_3.png" /> Drenaje': layer_Drenaje_3,'<img src="legend/Plantas_2.png" /> Plantas': layer_Plantas_2,'<img src="legend/Camino_1.png" /> Camino': layer_Camino_1,'<img src="legend/Lotes_0.png" /> Lotes': layer_Lotes_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Cable_Via_4.png" /> Cable_Via': layer_Cable_Via_4,'<img src="legend/Drenaje_3.png" /> Drenaje': layer_Drenaje_3,'<img src="legend/Plantas_2.png" /> Plantas': layer_Plantas_2,'<img src="legend/Camino_1.png" /> Camino': layer_Camino_1,'<img src="legend/Lotes_0.png" /> Lotes': layer_Lotes_0,},{collapsed:false}).addTo(map);
+        map.on("zoomend", function(){
+
+            if (map.hasLayer(layer_Cable_Via_4)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 18) {
+                    layer_Cable_Via_4.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Cable_Via_4.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+        });
         setBounds();
+            if (map.hasLayer(layer_Cable_Via_4)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 18) {
+                    layer_Cable_Via_4.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Cable_Via_4.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
         </script>
     </body>
 </html>
