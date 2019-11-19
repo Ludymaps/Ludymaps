@@ -130,28 +130,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['FID_'] !== null ? Autolinker.link(String(feature.properties['FID_'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Entity'] !== null ? Autolinker.link(String(feature.properties['Entity'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['Layer'] !== null ? Autolinker.link(String(feature.properties['Layer'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Color'] !== null ? Autolinker.link(String(feature.properties['Color'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Linetype'] !== null ? Autolinker.link(String(feature.properties['Linetype'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Elevation'] !== null ? Autolinker.link(String(feature.properties['Elevation'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LineWt'] !== null ? Autolinker.link(String(feature.properties['LineWt'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['RefName'] !== null ? Autolinker.link(String(feature.properties['RefName'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -220,14 +199,14 @@
                 pane: 'pane_Plantas_2',
                 radius: 3.2,
                 opacity: 1,
-                color: 'rgba(179,143,143,0.858824)',
+                color: 'rgba(189,204,210,0.858824)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(221,89,13,0.858824)',
+                fillColor: 'rgba(80,143,182,0.858824)',
             }
         }
         map.createPane('pane_Plantas_2');
@@ -258,7 +237,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['RefName'] !== null ? Autolinker.link(String(feature.properties['RefName'])) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? Autolinker.link(String(feature.properties['Layer'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -308,11 +287,11 @@
             return {
                 pane: 'pane_Cable_Via_4',
                 opacity: 1,
-                color: 'rgba(180,24,9,1.0)',
+                color: 'rgba(242,82,13,1.0)',
                 dashArray: '',
                 lineCap: 'round',
                 lineJoin: 'round',
-                weight: 3.0,
+                weight: 4.0,
                 fillOpacity: 0,
             }
         }
