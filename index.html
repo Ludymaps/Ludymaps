@@ -53,6 +53,7 @@
                 fillOpacity: 1
               });
             }
+            highlightLayer.openPopup();
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
@@ -83,6 +84,13 @@
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
                         e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
                     }
                 },
                 mouseover: highlightFeature,
@@ -124,6 +132,13 @@
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
                         e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
                     }
                 },
                 mouseover: highlightFeature,
@@ -177,16 +192,17 @@
                     for (i in e.target._eventParents) {
                         e.target._eventParents[i].resetStyle(e.target);
                     }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
                 },
                 mouseover: highlightFeature,
             });
             var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NEAR_DIST'] !== null ? Autolinker.link(String(feature.properties['NEAR_DIST'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['CUANTAS'] !== null ? Autolinker.link(String(feature.properties['CUANTAS'])) : '') + '</td>\
-                    </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Codigo'] !== null ? Autolinker.link(String(feature.properties['Codigo'])) : '') + '</td>\
                     </tr>\
@@ -232,6 +248,13 @@
                     for (i in e.target._eventParents) {
                         e.target._eventParents[i].resetStyle(e.target);
                     }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
                 },
                 mouseover: highlightFeature,
             });
@@ -247,7 +270,7 @@
             return {
                 pane: 'pane_Drenaje_3',
                 opacity: 1,
-                color: 'rgba(139,190,240,1.0)',
+                color: 'rgba(49,136,249,0.85098)',
                 dashArray: '',
                 lineCap: 'round',
                 lineJoin: 'round',
@@ -271,6 +294,13 @@
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
                         e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
                     }
                 },
                 mouseover: highlightFeature,
